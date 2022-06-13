@@ -12,7 +12,7 @@
 }
 
 .game__player {
-  wifth: 20px;
+  width: 20px;
   height: 20px;
   background-color: red;
   border-radius: 50%;

@@ -5,7 +5,13 @@ var interval;
 var both = 0; //Query Selectors
 
 var player = document.querySelector(".game__player");
-var game = document.querySelector(".game"); //Movement Functions
+var game = document.querySelector(".game"); //Platforms
+
+var platform = document.createElement("div");
+var hole = document.createElement("div");
+platform.setAttribute("class", "platform");
+hole.setAttribute("class", "hole");
+game.appendChild(platform); //Movement Functions
 
 function movementLeft() {
   var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));

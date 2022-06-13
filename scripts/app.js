@@ -1,9 +1,18 @@
 //Variables
 var interval;
 let both = 0;
+
 //Query Selectors
 const player = document.querySelector(".game__player");
 const game = document.querySelector(".game");
+
+//Platforms
+const platform = document.createElement("div");
+const hole = document.createElement("div");
+platform.setAttribute("class", "platform");
+hole.setAttribute("class", "hole");
+game.appendChild(platform);
+
 //Movement Functions
 function movementLeft() {
   var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));

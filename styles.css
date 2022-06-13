@@ -1,0 +1,24 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.game{
+  width: 400px;
+  height: 500px;
+  border: 1px solid black;
+  margin: auto;
+
+}
+
+.game__player {
+  wifth: 20px;
+  height: 20px;
+  background-color: red;
+  border-radius: 50%;
+  position: relative;
+  top: 440px;
+  left: 490px;
+  z-index: 100;
+
+}

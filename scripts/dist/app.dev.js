@@ -1,21 +1,15 @@
 "use strict";
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 //Variables
 var interval;
 var both = 0;
-var random = Math.floor(Math.random() * 360); //Query Selectors
+var random = Math.floor(Math.random() * 360);
+var counter = 0; //Query Selectors
 
 var player = document.querySelector(".game__player");
-var game = document.querySelector(".game"); //Platforms
-
-var platform = document.createElement("div");
-var hole = document.createElement("div");
-platform.setAttribute("class", "platform");
-hole.setAttribute("class", "hole");
-platform.setAttribute("id", "platform");
-hole.setAttribute("id", "hole");
-game.appendChild(platform);
-platform.style.left = random + "px"; //Movement Functions
+var game = document.querySelector(".game"); //Movement Functions
 
 function movementLeft() {
   var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
@@ -52,3 +46,24 @@ document.addEventListener("keyup", function (event) {
   clearInterval(interval);
   both = 0;
 });
+setInterval(function () {
+  var platformLast = document.getElementById("block" + (counter - 1));
+  var holeLast = document.getElementById("hole" + (counter - 1));
+
+  if (counter > 0) {
+    var platformLastTop = window.getComputedStyle(platfomrLast).getPropertyValue("top");
+    var holeLastTop = window.getComputedStyle(holeLast).getPropertyValue("top");
+  }
+
+  ;
+  var platform = document.createElement("div");
+  platform.setAttribute("class", "platform");
+  platform.setAttribute("id", "platform" + counter);
+  game.appendChild(platform);
+  var hole = document.createElement("div");
+  hole.setAttribute("class", "hole");
+  hole.setAttribute("id", "hole" + counter);
+  hole.style.left = random + "px";
+  game.appendChild(hole);
+  _readOnlyError("counter"), counter++;
+}, 1);

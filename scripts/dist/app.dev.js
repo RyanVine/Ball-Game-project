@@ -1,11 +1,8 @@
 "use strict";
 
-function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
-
 //Variables
 var interval;
 var both = 0;
-var random = Math.floor(Math.random() * 360);
 var counter = 0; //Query Selectors
 
 var player = document.querySelector(".game__player");
@@ -47,23 +44,27 @@ document.addEventListener("keyup", function (event) {
   both = 0;
 });
 setInterval(function () {
-  var platformLast = document.getElementById("block" + (counter - 1));
+  var platformLast = document.getElementById("platform" + (counter - 1));
   var holeLast = document.getElementById("hole" + (counter - 1));
 
   if (counter > 0) {
-    var platformLastTop = window.getComputedStyle(platfomrLast).getPropertyValue("top");
-    var holeLastTop = window.getComputedStyle(holeLast).getPropertyValue("top");
+    var platformLastTop = parseInt(window.getComputedStyle(platformLast).getPropertyValue("top"));
+    var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
   }
 
-  ;
-  var platform = document.createElement("div");
-  platform.setAttribute("class", "platform");
-  platform.setAttribute("id", "platform" + counter);
-  game.appendChild(platform);
-  var hole = document.createElement("div");
-  hole.setAttribute("class", "hole");
-  hole.setAttribute("id", "hole" + counter);
-  hole.style.left = random + "px";
-  game.appendChild(hole);
-  _readOnlyError("counter"), counter++;
+  if (platformLastTop < 400 || counter == 0) {
+    var platform = document.createElement("div");
+    platform.setAttribute("class", "platform");
+    platform.setAttribute("id", "platform" + counter);
+    platform.style.top = platformLastTop + 100 + "px";
+    game.appendChild(platform);
+    var random = Math.floor(Math.random() * 360);
+    var hole = document.createElement("div");
+    hole.setAttribute("class", "hole");
+    hole.setAttribute("id", "hole" + counter);
+    hole.style.left = random + "px";
+    hole.style.top = holeLastTop + 100 + "px";
+    game.appendChild(hole);
+    counter++;
+  }
 }, 1);

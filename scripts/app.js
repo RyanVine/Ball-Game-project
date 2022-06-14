@@ -1,8 +1,9 @@
 //Variables
 var interval;
 let both = 0;
-const random = Math.floor(Math.random() * 360);
-const counter = 0;
+
+let counter = 0;
+
 
 //Query Selectors
 const player = document.querySelector(".game__player");
@@ -11,7 +12,7 @@ const game = document.querySelector(".game");
 
 //Movement Functions
 function movementLeft() {
-  var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+  const left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
   if (left > 0) {
     player.style.left = left - 2 + "px";
   }
@@ -45,23 +46,26 @@ document.addEventListener("keyup", (event) => {
 });
 
 setInterval(function(){
-  const platformLast = document.getElementById("block"+(counter-1));
-  const holeLast = document.getElementById("hole"+(counter-1));
+  var platformLast = document.getElementById("platform"+(counter-1));
+  var holeLast = document.getElementById("hole"+(counter-1));
   if(counter>0){
-    const platformLastTop = window.getComputedStyle(platfomrLast).getPropertyValue("top");
-    const holeLastTop = window.getComputedStyle(holeLast).getPropertyValue("top");
-  };
-  
-  const platform = document.createElement("div");
-  platform.setAttribute("class", "platform");
-  platform.setAttribute("id", "platform" + counter);
-  game.appendChild(platform);
+    var platformLastTop = parseInt(window.getComputedStyle(platformLast).getPropertyValue("top"));
+    var holeLastTop = parseInt(window.getComputedStyle(holeLast).getPropertyValue("top"));
+  }
+  if(platformLastTop<400 || counter ==0){
+    var platform = document.createElement("div");
+    platform.setAttribute("class", "platform");
+    platform.setAttribute("id", "platform"+counter);
+    platform.style.top = platformLastTop + 100 + "px";
+    game.appendChild(platform);
 
-  const hole = document.createElement("div");
-  hole.setAttribute("class", "hole");
-  hole.setAttribute("id", "hole" + counter);
-  hole.style.left = random + "px";
-  game.appendChild(hole);
-
-  counter++
-},1)
+    var random = Math.floor(Math.random() * 360);
+    var hole = document.createElement("div");
+    hole.setAttribute("class", "hole");
+    hole.setAttribute("id", "hole"+counter);
+    hole.style.left = random + "px";
+    hole.style.top = holeLastTop + 100 + "px";
+    game.appendChild(hole);
+    counter++;
+   }
+},1);

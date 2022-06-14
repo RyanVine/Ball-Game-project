@@ -1,8 +1,8 @@
 //Variables
 var interval;
 let both = 0;
-
 let counter = 0;
+let currentPlatforms = [];
 
 
 //Query Selectors
@@ -66,6 +66,7 @@ setInterval(function(){
     hole.style.left = random + "px";
     hole.style.top = holeLastTop + 100 + "px";
     game.appendChild(hole);
+    currentPlatforms.push(counter);
     counter++;
    }
 },1);

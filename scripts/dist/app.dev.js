@@ -3,7 +3,8 @@
 //Variables
 var interval;
 var both = 0;
-var counter = 0; //Query Selectors
+var counter = 0;
+var currentPlatforms = []; //Query Selectors
 
 var player = document.querySelector(".game__player");
 var game = document.querySelector(".game"); //Movement Functions
@@ -65,6 +66,7 @@ setInterval(function () {
     hole.style.left = random + "px";
     hole.style.top = holeLastTop + 100 + "px";
     game.appendChild(hole);
+    currentPlatforms.push(counter);
     counter++;
   }
 }, 1);

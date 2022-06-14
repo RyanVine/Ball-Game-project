@@ -1,6 +1,7 @@
 //Variables
 var interval;
 let both = 0;
+const random = Math.floor(Math.random() * 360);
 
 //Query Selectors
 const player = document.querySelector(".game__player");
@@ -12,6 +13,7 @@ const hole = document.createElement("div");
 platform.setAttribute("class", "platform");
 hole.setAttribute("class", "hole");
 game.appendChild(platform);
+hole.style.left = random +
 
 //Movement Functions
 function movementLeft() {

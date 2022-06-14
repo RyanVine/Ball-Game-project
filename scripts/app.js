@@ -12,8 +12,10 @@ const platform = document.createElement("div");
 const hole = document.createElement("div");
 platform.setAttribute("class", "platform");
 hole.setAttribute("class", "hole");
+platform.setAttribute("id", "platform");
+hole.setAttribute("id", "hole");
 game.appendChild(platform);
-hole.style.left = random +
+platform.style.left = random + "px";
 
 //Movement Functions
 function movementLeft() {

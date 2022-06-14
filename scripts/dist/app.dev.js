@@ -12,16 +12,18 @@ var platform = document.createElement("div");
 var hole = document.createElement("div");
 platform.setAttribute("class", "platform");
 hole.setAttribute("class", "hole");
+platform.setAttribute("id", "platform");
+hole.setAttribute("id", "hole");
 game.appendChild(platform);
+platform.style.left = random + "px"; //Movement Functions
 
-hole.style.left = random + //Movement Functions
 function movementLeft() {
   var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
 
   if (left > 0) {
     player.style.left = left - 2 + "px";
   }
-};
+}
 
 function movementRight() {
   var left = parseInt(window.getComputedStyle(player).getPropertyValue("left"));

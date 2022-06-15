@@ -27,7 +27,7 @@ function movementRight() {
   }
 }
 
-//Event Listener for motion
+//Event Listener for Player motion
 document.addEventListener("keydown", (event) => {
   if (both == 0) {
     both++;
@@ -82,6 +82,7 @@ let blocks = setInterval(function () {
     window.getComputedStyle(player).getPropertyValue("top")
   );
 
+  //fail state and score tracker
   if(playerTop <= 0){
     alert("Game Over! Score: " + (counter - 9));
     clearInterval(blocks);

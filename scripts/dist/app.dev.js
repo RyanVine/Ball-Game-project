@@ -23,7 +23,7 @@ function movementRight() {
   if (left < 380) {
     player.style.left = left + 2 + "px";
   }
-} //Event Listener for motion
+} //Event Listener for Player motion
 
 
 document.addEventListener("keydown", function (event) {
@@ -71,7 +71,7 @@ var blocks = setInterval(function () {
   }
 
   var playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
-  var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
+  var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top")); //fail state and score tracker
 
   if (playerTop <= 0) {
     alert("Game Over! Score: " + (counter - 9));

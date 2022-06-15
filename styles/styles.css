@@ -7,6 +7,7 @@
   width: 400px;
   height: 500px;
   border: 1px solid black;
+  background-color: black;
   margin: auto;
   overflow: hidden;
 
@@ -15,7 +16,7 @@
 .game__player {
   width: 20px;
   height: 20px;
-  background-color: red;
+  background-color: rgb(51, 255, 0);
   border-radius: 50%;
   position: relative;
   top: 400px;
@@ -26,7 +27,7 @@
 .platform {
   width: 400px;
   height: 20px;
-  background-color: black;
+  background-color: brown;
   position: relative;
   top: 100px;
   margin-top: -20px;
@@ -35,7 +36,7 @@
 .hole {
   width: 40px;
   height: 20px;
-  background-color: white;
+  background-color: black;
   position: relative;
   top: 100px;
   margin-top: -20px;

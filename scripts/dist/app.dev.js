@@ -1,5 +1,7 @@
 "use strict";
 
+function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
+
 //Variables
 var interval;
 var both = 0;
@@ -70,11 +72,36 @@ setInterval(function () {
     counter++;
   }
 
+  var playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
+  var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
+  var drop = 0;
+
   for (var i = 0; i < currentPlatforms.length; i++) {
     var current = currentPlatforms[i];
     var iPlatform = document.getElementById("platform" + current);
-    var ihole = document.getElementById("hole" + current);
+    var iHole = document.getElementById("hole" + current);
     var iPlatformTop = parseFloat(window.getComputedStyle(iPlatform).getPropertyValue("top"));
     iPlatform.style.top = iPlatformTop - 0.5 + "px";
+    iHole.style.top = iPlatformTop - 0.5 + "px";
+
+    if (iPlatformTop < -20) {
+      currentPlatforms.shift();
+      iPlatform.remove();
+      iHole.remove();
+    }
+
+    if (iPlatformTop - 20 < playerTop && iPlatformTop > playerTop) {
+      _readOnlyError("drop"), drop++;
+
+      if (iHoleLeft <= playerLeft && iHoleLeft + 20 >= playerLeft) {
+        drop = (_readOnlyError("drop"), 0);
+      }
+    }
+
+    if (drop == 0) {
+      player.style.top = playerTop + 2 + "px";
+    } else {
+      player.style.top = playerTop - 0.5 + "px";
+    }
   }
 }, 1);

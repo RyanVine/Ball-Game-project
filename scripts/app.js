@@ -74,15 +74,39 @@ setInterval(function () {
     currentPlatforms.push(counter);
     counter++;
   }
+  
+  const playerLeft = parseInt(
+    window.getComputedStyle(player).getPropertyValue("left")
+  );
+  const playerTop = parseInt(
+    window.getComputedStyle(player).getPropertyValue("top")
+  );
+  const drop = 0;
   for (let i = 0; i < currentPlatforms.length; i++) {
     let current = currentPlatforms[i];
     let iPlatform = document.getElementById("platform" + current);
-    let ihole = document.getElementById("hole" + current);
+    let iHole = document.getElementById("hole" + current);
     let iPlatformTop = parseFloat(
       window.getComputedStyle(iPlatform).getPropertyValue("top")
     );
     iPlatform.style.top = iPlatformTop - 0.5 + "px";
-    
+    iHole.style.top = iPlatformTop - 0.5 + "px";
+      if(iPlatformTop < -20){
+        currentPlatforms.shift();
+      iPlatform.remove();
+      iHole.remove();
+      }
+      if(iPlatformTop - 20 < playerTop && iPlatformTop > playerTop){
+        drop++;
+        if(iHoleLeft <= playerLeft && iHoleLeft + 20 >= playerLeft){
+          drop = 0;
+        }
+      }
 
+      if( drop == 0){
+        player.style.top = playerTop + 2 + "px"
+      } else {
+        player.style.top = playerTop - 0.5 + "px"
+      }
   }
 }, 1);

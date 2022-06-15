@@ -69,4 +69,12 @@ setInterval(function () {
     currentPlatforms.push(counter);
     counter++;
   }
+
+  for (var i = 0; i < currentPlatforms.length; i++) {
+    var current = currentPlatforms[i];
+    var iPlatform = document.getElementById("platform" + current);
+    var ihole = document.getElementById("hole" + current);
+    var iPlatformTop = parseFloat(window.getComputedStyle(iPlatform).getPropertyValue("top"));
+    iPlatform.style.top = iPlatformTop - 0.5 + "px";
+  }
 }, 1);

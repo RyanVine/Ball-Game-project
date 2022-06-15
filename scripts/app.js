@@ -46,7 +46,7 @@ document.addEventListener("keyup", (event) => {
   both = 0;
 });
 
-setInterval(function () {
+let blocks = setInterval(function () {
   var platformLast = document.getElementById("platform" + (counter - 1));
   var holeLast = document.getElementById("hole" + (counter - 1));
   if (counter > 0) {
@@ -81,6 +81,13 @@ setInterval(function () {
   const playerTop = parseInt(
     window.getComputedStyle(player).getPropertyValue("top")
   );
+
+  if(playerTop <= 0){
+    alert("Game Over! Score: " + (counter - 9));
+    clearInterval(blocks);
+    location.reload();
+  }
+
   let drop = 0;
   for (let i = 0; i < currentPlatforms.length; i++) {
     let current = currentPlatforms[i];
@@ -93,6 +100,7 @@ setInterval(function () {
       window.getComputedStyle(iHole).getPropertyValue("left")
     );
 
+
     iPlatform.style.top = iPlatformTop - 0.5 + "px";
     iHole.style.top = iPlatformTop - 0.5 + "px";
     if (iPlatformTop < -20) {
@@ -100,6 +108,8 @@ setInterval(function () {
       iPlatform.remove();
       iHole.remove();
     }
+
+
     if (iPlatformTop - 20 < playerTop && iPlatformTop > playerTop) {
       drop++;
       if (iHoleLeft <= playerLeft && iHoleLeft + 20 >= playerLeft) {

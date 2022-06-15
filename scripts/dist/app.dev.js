@@ -44,7 +44,7 @@ document.addEventListener("keyup", function (event) {
   clearInterval(interval);
   both = 0;
 });
-setInterval(function () {
+var blocks = setInterval(function () {
   var platformLast = document.getElementById("platform" + (counter - 1));
   var holeLast = document.getElementById("hole" + (counter - 1));
 
@@ -72,6 +72,13 @@ setInterval(function () {
 
   var playerLeft = parseInt(window.getComputedStyle(player).getPropertyValue("left"));
   var playerTop = parseInt(window.getComputedStyle(player).getPropertyValue("top"));
+
+  if (playerTop <= 0) {
+    alert("Game Over! Score: " + (counter - 9));
+    clearInterval(blocks);
+    location.reload();
+  }
+
   var drop = 0;
 
   for (var i = 0; i < currentPlatforms.length; i++) {
